@@ -2,6 +2,11 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 
+/*
+  Login лучше описать как функциональный компонент, используя хуки, useState
+  Это поможет нам сократить код 
+*/
+
 class Login extends PureComponent {
   state = {
     redirectToPreviousRoute: false,
@@ -38,11 +43,17 @@ class Login extends PureComponent {
     const { location, errorMessage } = this.props
     const { from } = location.state || { from: { pathname: '/' } }
     const { userName, password, redirectToPreviousRoute } = this.state
-
+    /*
+      В render функции не жедательно выполнять вычисления или логику.
+      Желательно отдавать чистый jsx, лучше вынести условный оператор ниже выше в конмпоненту
+    */
     if (redirectToPreviousRoute) {
       return <Redirect to={from} />
     }
 
+    /*
+      Содержимое внутри return лучше вынести в отдельный презентационный компонент, а данные и методы передать через props
+    */
     return (
       <div>
         {errorMessage && <p>{errorMessage}</p>}

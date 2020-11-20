@@ -1,5 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+/*
+  Дублируются название файлов с названием папок, можно переименовать
+  файлы во всех компонентах на index.js и при импорте указвать только название папки.
+  Это считается хорошим тоном. Это позволит делать импорт как в примере ниже. 
+  import LinkButton from '../link-button'
+*/
 import PrivateRoute from '../../containers/private-route/private-route.jsx'
 import LoginContainer from '../../containers/login-container/login-container'
 import LinkButton from '../link-button/link-button.jsx'
